@@ -1,4 +1,4 @@
-package com.mubarak.room_demo_kotlin.apihome
+package com.mubarak.room_demo_kotlin.homeapi.model
 
 
 data class HomeDataClass(

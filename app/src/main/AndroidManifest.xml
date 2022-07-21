@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Room_Demo_kotlin"
         tools:targetApi="31">
         <activity
-            android:name=".apihome.ApiActivity"
+            android:name=".homeapi.ui.ApiActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

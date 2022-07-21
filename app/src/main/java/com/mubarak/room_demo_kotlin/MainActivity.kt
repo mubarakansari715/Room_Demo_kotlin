@@ -3,7 +3,7 @@ package com.mubarak.room_demo_kotlin
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.mubarak.room_demo_kotlin.apihome.ApiActivity
+import com.mubarak.room_demo_kotlin.homeapi.ui.ApiActivity
 import com.mubarak.room_demo_kotlin.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

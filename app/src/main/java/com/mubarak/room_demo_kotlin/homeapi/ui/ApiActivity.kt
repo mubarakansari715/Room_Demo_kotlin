@@ -1,16 +1,16 @@
-package com.mubarak.room_demo_kotlin.apihome
+package com.mubarak.room_demo_kotlin.homeapi.ui
 
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.mubarak.room_demo_kotlin.R
+import com.mubarak.room_demo_kotlin.homeapi.viewmodel.HomeViewModel
 import com.mubarak.room_demo_kotlin.utils.ApiState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
+import kotlinx.android.synthetic.main.activity_api.*
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -31,6 +31,8 @@ class ApiActivity : AppCompatActivity() {
                     }
                     is ApiState.Success<*> -> {
                         Log.d(TAG, "@@@onCreate: Success ${it.data}")
+                        text.text = it.data.toString()
+
                     }
                     is ApiState.Failure -> {
                         Log.d(TAG, "@@@onCreate: Failed")

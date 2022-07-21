@@ -1,6 +1,6 @@
 package com.mubarak.room_demo_kotlin.network
 
-import com.mubarak.room_demo_kotlin.apihome.HomeDataClass
+import com.mubarak.room_demo_kotlin.homeapi.model.HomeDataClass
 import retrofit2.http.GET
 
 

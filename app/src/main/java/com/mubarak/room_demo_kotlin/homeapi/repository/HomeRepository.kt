@@ -1,5 +1,6 @@
-package com.mubarak.room_demo_kotlin.apihome
+package com.mubarak.room_demo_kotlin.homeapi.repository
 
+import com.mubarak.room_demo_kotlin.homeapi.model.HomeDataClass
 import com.mubarak.room_demo_kotlin.network.ApiService
 import javax.inject.Inject
 
