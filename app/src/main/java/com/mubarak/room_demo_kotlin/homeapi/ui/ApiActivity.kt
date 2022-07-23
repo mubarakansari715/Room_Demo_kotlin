@@ -42,7 +42,7 @@ class ApiActivity : AppCompatActivity() {
             }
         })
 
-        try {
+       /* try {
 
             lifecycleScope.launchWhenStarted {
                 viewModel.fetchData()
@@ -74,6 +74,46 @@ class ApiActivity : AppCompatActivity() {
         } catch (e: Exception) {
             e.printStackTrace()
             Log.e(TAG, "@@@onCreate: ${e.printStackTrace()}")
-        }
+        }*/
+
+        viewModel.data.observe(this, Observer {
+
+            Log.d(TAG, "@@@onCreate: Success ${it.data}")
+            if (it.data is List<*>) {
+                val listData: List<HomeDataClass> =
+                    it.data.filterIsInstance<HomeDataClass>()
+                recyclerView.adapter = HomeAdapter(list = listData)
+            }
+
+/*
+            when (it) {
+                is ApiState.Success<*> -> {
+
+                    Log.d(TAG, "@@@onCreate: Success ${it.data}")
+                    text.text = it.data.toString()
+                    if (it.data is List<*>) {
+                        val listData: List<HomeDataClass> =
+                            it.data.filterIsInstance<HomeDataClass>()
+                        recyclerView.adapter = HomeAdapter(list = listData)
+                    }
+
+                }
+                is ApiState.Loading -> {
+                    Log.d(TAG, "@@@onCreate: Loading")
+                }
+                is ApiState.Error -> {
+                    Log.d(TAG, "@@@onCreate: Failed ${it.error}")
+                }
+                else -> {
+
+                }
+            }
+*/
+            /*  progressCircular.isVisible =
+                  result is ApiState.Loading && result.data.isNullOrEmpty()
+              tv.isVisible = result is ApiState.Error && result.data.isNullOrEmpty()
+              tv.text = result.error?.localizedMessage*/
+
+        })
     }
 }
