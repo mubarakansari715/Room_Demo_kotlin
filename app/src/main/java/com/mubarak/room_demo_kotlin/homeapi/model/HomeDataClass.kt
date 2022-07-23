@@ -1,8 +1,11 @@
 package com.mubarak.room_demo_kotlin.homeapi.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity(tableName = "HomeDataClass")
 data class HomeDataClass(
-     val id: Int,
+    @PrimaryKey val id: Int,
     val title: String,
     val url: String,
 )

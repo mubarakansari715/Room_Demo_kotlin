@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("photos")
-    suspend fun getData(): List<HomeDataClass>
+    suspend fun getData(): ArrayList<HomeDataClass>
 
 }

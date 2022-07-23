@@ -1,4 +1,4 @@
-package com.example.iifl_assignment.utils
+package com.mubarak.room_demo_kotlin.utils
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
