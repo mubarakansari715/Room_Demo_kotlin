@@ -14,10 +14,8 @@ class HomeRepository @Inject constructor(
 
     suspend fun getRepository(): ArrayList<HomeDataClass> {
         val fetchData = apiService.getData()
-        if (fetchData.isEmpty()) {
-            db.withTransaction {
-                schemeDao.insertSchemes(fetchData.toList())
-            }
+        db.withTransaction {
+            schemeDao.insertSchemes(fetchData.toList())
         }
         return fetchData
     }

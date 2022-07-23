@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import com.mubarak.room_demo_kotlin.MyApplication.Companion.networkConnectivity
 import com.mubarak.room_demo_kotlin.R
 import com.mubarak.room_demo_kotlin.homeapi.adapter.HomeAdapter
 import com.mubarak.room_demo_kotlin.homeapi.model.HomeDataClass
@@ -23,7 +24,6 @@ import kotlinx.coroutines.launch
 class ApiActivity : AppCompatActivity() {
 
     val viewModel: HomeViewModel by viewModels()
-    private lateinit var networkConnectivity: NetworkConnectivity
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
