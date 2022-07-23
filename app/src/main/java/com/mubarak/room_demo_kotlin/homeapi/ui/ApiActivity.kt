@@ -52,11 +52,11 @@ class ApiActivity : AppCompatActivity() {
 
                             Log.d(TAG, "@@@onCreate: Success ${it.data}")
                             //text.text = it.data.toString()
-                           /* if (it.data is List<*>) {
+                            if (it.data is List<*>) {
                                 val listData: List<HomeDataClass> =
                                     it.data.filterIsInstance<HomeDataClass>()
                                 recyclerView.adapter = HomeAdapter(list = listData)
-                            }*/
+                            }
 
                         }
                         is ApiState.Empty -> {

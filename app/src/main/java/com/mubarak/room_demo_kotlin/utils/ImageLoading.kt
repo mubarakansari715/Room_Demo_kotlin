@@ -4,6 +4,7 @@ import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.mubarak.room_demo_kotlin.R
+import com.squareup.picasso.Picasso
 
 object ImageLoading {
     @JvmStatic
@@ -11,7 +12,14 @@ object ImageLoading {
 
     fun ImageView.loadImage(url:String?){
         if(url!=null&& url.isNotEmpty()){
-            Glide.with(this.context).load(url).into(this)
+           /* Glide.with(this.context)
+                .load(url)
+                .error(R.drawable.ic_launcher_background)
+                .into(this)*/
+            Picasso.get()
+                .load(url)
+                .error(R.drawable.ic_launcher_background)
+                .into(this)
         }
         else{
             Glide.with(this.context).load(R.drawable.ic_launcher_background).into(this)
