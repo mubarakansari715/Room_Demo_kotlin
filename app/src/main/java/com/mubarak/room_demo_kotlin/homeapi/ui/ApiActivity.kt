@@ -6,8 +6,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
 import com.mubarak.room_demo_kotlin.MyApplication.Companion.networkConnectivity
 import com.mubarak.room_demo_kotlin.R
 import com.mubarak.room_demo_kotlin.homeapi.adapter.HomeAdapter
@@ -17,8 +17,6 @@ import com.mubarak.room_demo_kotlin.utils.ApiState
 import com.mubarak.room_demo_kotlin.utils.NetworkConnectivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_api.*
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ApiActivity : AppCompatActivity() {
@@ -79,41 +77,21 @@ class ApiActivity : AppCompatActivity() {
         viewModel.data.observe(this, Observer {
 
             Log.d(TAG, "@@@onCreate: Success ${it.data}")
+
+            //progress
+            progress_circular.isVisible =
+                it is ApiState.Loading && it.data.isNullOrEmpty()
+
+            //error
+            text.isVisible = it is ApiState.Error && it.data.isNullOrEmpty()
+            text.text = it.error?.localizedMessage
+
+            //success
             if (it.data is List<*>) {
                 val listData: List<HomeDataClass> =
                     it.data.filterIsInstance<HomeDataClass>()
                 recyclerView.adapter = HomeAdapter(list = listData)
             }
-
-/*
-            when (it) {
-                is ApiState.Success<*> -> {
-
-                    Log.d(TAG, "@@@onCreate: Success ${it.data}")
-                    text.text = it.data.toString()
-                    if (it.data is List<*>) {
-                        val listData: List<HomeDataClass> =
-                            it.data.filterIsInstance<HomeDataClass>()
-                        recyclerView.adapter = HomeAdapter(list = listData)
-                    }
-
-                }
-                is ApiState.Loading -> {
-                    Log.d(TAG, "@@@onCreate: Loading")
-                }
-                is ApiState.Error -> {
-                    Log.d(TAG, "@@@onCreate: Failed ${it.error}")
-                }
-                else -> {
-
-                }
-            }
-*/
-            /*  progressCircular.isVisible =
-                  result is ApiState.Loading && result.data.isNullOrEmpty()
-              tv.isVisible = result is ApiState.Error && result.data.isNullOrEmpty()
-              tv.text = result.error?.localizedMessage*/
-
         })
     }
 }
